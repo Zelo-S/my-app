@@ -1,7 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../listservice.service';
-
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
 	selector: 'app-taskdetail',
@@ -10,20 +7,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class TaskdetailComponent implements OnInit {
 	
-	/*
-	@Input() task?: Task;
-	
-	saveData(){
-		const ref = this.store.collection("individual-tasks");
-		ref.add(this.task).then(
-			(response) => { console.log(response); }
-		).catch(
-			(error) => { console.log(error); }
-		);
-	}
 
-	constructor(private store: AngularFirestore, public tasks: Task) { }
-	*/
+	constructor() { }
+
 	ngOnInit(): void {
 	}
 }

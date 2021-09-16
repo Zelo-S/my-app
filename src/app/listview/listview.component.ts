@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ListserviceService } from '../listservice.service';
-import { Task } from '../listservice.service';
+import { Task, ListserviceService } from '../listservice.service';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore'
+import { DocumentChangeAction } from '@angular/fire/compat/firestore';
 
 @Component({
 	selector: 'app-listview',
@@ -10,8 +10,8 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat
 })
 export class ListviewComponent implements OnInit {
 	
-	taskList: Task[] = [];
-	
+	taskList: DocumentChangeAction<unknown>[] = [];	
+
 	selectedTask?: Task;
 	
 	// setting tasks
@@ -20,10 +20,7 @@ export class ListviewComponent implements OnInit {
 		console.log("Selected: " + task.id);
 	}
 	
-	getTasks(): void{
-
-	}
-	
+	/*
 	saveAllData(){
 		const taskOb = {
 			value: this.taskList
@@ -35,11 +32,15 @@ export class ListviewComponent implements OnInit {
 			(error) => { console.log(error); }
 		);
 	}
+	*/
 
-	constructor(private listService: ListserviceService, private store: AngularFirestore) { }
+	constructor(private listService: ListserviceService, private store: AngularFirestore, public tasks: Task) { }
 
 	ngOnInit(): void {
-		this.getTasks();
+		this.listService.getTasks().then(
+			(res) => {
+				this.taskList = res;
+			})
 	}
 
 }
