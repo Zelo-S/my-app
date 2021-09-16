@@ -1,16 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Task } from './task';
-import { TASKS } from './mock-tasklist';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ListserviceService {
 	
-	getTasks(): Observable<Task[]>{
-		return of(TASKS);
+	async createTask(task: Task){
+		console.log("Object", task);
+		await this.store.collection("tasks").doc().set({...task});
 	}
 
-	constructor() { }
+	constructor(private store: AngularFirestore) { }
+}
+
+// create a class to work with
+@Injectable()
+export class Task{
+    id!: number;
+    content!: string;
+    dateDue!: string;
 }

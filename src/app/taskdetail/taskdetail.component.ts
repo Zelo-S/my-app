@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../task';
+import { Task } from '../listservice.service';
 
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 
@@ -10,6 +10,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 })
 export class TaskdetailComponent implements OnInit {
 	
+	/*
 	@Input() task?: Task;
 	
 	saveData(){
@@ -21,9 +22,8 @@ export class TaskdetailComponent implements OnInit {
 		);
 	}
 
-	constructor(private store: AngularFirestore) { }
-
+	constructor(private store: AngularFirestore, public tasks: Task) { }
+	*/
 	ngOnInit(): void {
 	}
-
 }

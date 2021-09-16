@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListserviceService } from '../listservice.service';
-import { Task } from '../task';
-import { AngularFirestore } from '@angular/fire/compat/firestore'
+import { Task } from '../listservice.service';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore'
 
 @Component({
 	selector: 'app-listview',
@@ -21,10 +21,7 @@ export class ListviewComponent implements OnInit {
 	}
 	
 	getTasks(): void{
-		// subscribe to task list
-		this.listService.getTasks().subscribe(
-			taskList => this.taskList = taskList
-		);
+
 	}
 	
 	saveAllData(){

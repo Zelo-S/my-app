@@ -9,20 +9,23 @@ import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
 
-import { AngularFirestore } from '@angular/fire/compat/firestore'
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { TaskaddComponent } from './taskadd/taskadd.component'
+import { Task } from './listservice.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListviewComponent,
-    TaskdetailComponent
+    TaskdetailComponent,
+    TaskaddComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [ Task ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
