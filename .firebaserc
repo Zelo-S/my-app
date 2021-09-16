@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "my-app-db-75e83": {
+      "hosting": {
+        "my-app": [
+          "my-app-db-75e83"
+        ]
+      }
+    }
+  }
+}
