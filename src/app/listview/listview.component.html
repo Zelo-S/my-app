@@ -1,1 +1,8 @@
-<p>listview works!</p>
+<div *ngIf="taskList">
+    <!-- Iterating thru our tasks -->
+    <div *ngFor="let task of taskList" (click)="whenSelect(task)">
+        {{ task.id }} <span>{{task.content}}</span> due {{ task.dateDue }}
+    </div>
+</div>
+
+<app-taskdetail [task]="selectedTask"></app-taskdetail>
