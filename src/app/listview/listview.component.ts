@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ListserviceService } from '../listservice.service';
 import { Task } from '../task';
+import { AngularFirestore } from '@angular/fire/compat/firestore'
 
 @Component({
 	selector: 'app-listview',
@@ -25,8 +26,20 @@ export class ListviewComponent implements OnInit {
 			taskList => this.taskList = taskList
 		);
 	}
+	
+	saveAllData(){
+		const taskOb = {
+			value: this.taskList
+		}
+		const ref = this.store.collection("tasks");
+		ref.add(taskOb).then(
+			(response) => { console.log(response); }
+		).catch(
+			(error) => { console.log(error); }
+		);
+	}
 
-	constructor(private listService: ListserviceService) { }
+	constructor(private listService: ListserviceService, private store: AngularFirestore) { }
 
 	ngOnInit(): void {
 		this.getTasks();

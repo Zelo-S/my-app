@@ -6,6 +6,10 @@ import { ListviewComponent } from './listview/listview.component';
 import { TaskdetailComponent } from './taskdetail/taskdetail.component';
 
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat'
+import { environment } from 'src/environments/environment';
+
+import { AngularFirestore } from '@angular/fire/compat/firestore'
 
 @NgModule({
   declarations: [
@@ -15,7 +19,8 @@ import { FormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
